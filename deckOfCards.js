@@ -9,101 +9,36 @@ let Card = function(suit, value, name){
 }
 
 let Deck = function(){
+
   this.cards = []
 
-  function createCardsForDeck(deck){
+  function createCardsForDeck(deck) {
     let counter = 0
-    
-    while(counter < 4){
-      let name
-      if (counter == 0){
-        let suit = 'Spades'
-        
-        for(let i = 1; i <= 13; i++){
-          if (i == 1){
-            name = "Ace"
-          }
-          else if (i == 11){
-             name = "Jack"
-          } else if (i == 12){
-             name = "Queen"
-          } else if (i == 13){
-             name = "King"
-          } else {
-             name = i.toString()
-          }
-          card = new Card(suit, i, name)
-          deck.cards.push(card)
-        }
-        counter ++
-      }
-      if (counter = 1) {
-        let suit = 'Clubs'
 
-        for (let i = 1; i <= 13; i++) {
-          if (i == 1) {
-            name = "Ace"
-          }
-          else if (i == 11) {
-            name = "Jack"
-          } else if (i == 12) {
-            name = "Queen"
-          } else if (i == 13) {
-            name = "King"
-          } else {
-            name = i.toString()
-          }
-          card = new Card(suit, i, name)
-          deck.cards.push(card)
-        }
-        counter ++
-      }
-      if (counter = 2) {
-        let suit = 'Hearts'
+    let name = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+    let value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
-        for (let i = 1; i <= 13; i++) {
-          if (i == 1) {
-            name = "Ace"
-          }
-          else if (i == 11) {
-            name = "Jack"
-          } else if (i == 12) {
-            name = "Queen"
-          } else if (i == 13) {
-            name = "King"
-          } else {
-            name = i.toString()
-          }
-          card = new Card(suit, i, name)
-          deck.cards.push(card)
-        }
-        counter ++
+    while (counter < 4) {
+      let suit
+      if (counter == 0) {
+        suit = "Spades"
+      } else if (counter == 1) {
+        suit = "Clubs"
+      } else if (counter == 2) {
+        suit = "Hearts"
+      } else {
+        suit = "Diamonds"
       }
-        if (counter = 3) {
-          let suit = 'Diamonds'
-
-          for (let i = 1; i <= 13; i++) {
-            if (i == 1) {
-              name = "Ace"
-            }
-            else if (i == 11) {
-              name = "Jack"
-            } else if (i == 12) {
-              name = "Queen"
-            } else if (i == 13) {
-              name = "King"
-            } else {
-              name = i.toString()
-            }
-            card = new Card(suit, i, name)
-            deck.cards.push(card)
-          }
-          counter ++
-        }
+      for (let i = 0; i < name.length; i++) {
+        deck.cards.push(card = new Card(suit, value[i], name[i]))
+      }
+      counter++
     }
-  }
 
+  }
+  
   createCardsForDeck(this)
+    
 
   Deck.prototype.shuffle = function(){
     for (let i = this.cards.length - 1; i > 0; i--) {
@@ -144,11 +79,3 @@ let Player = function(name){
     }
   }
 }
-
-player1 = new Player('Greg')
-deck = new Deck()
-deck.shuffle()
-player1.drawCard(deck)
-console.log(player1.hand[0])
-
-console.log(deck.cards.length)
